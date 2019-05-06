@@ -1,0 +1,43 @@
+@mixin supportsGrid {
+  @supports ((display: grid) and (not (display: -ms-grid))) {
+    @content;
+  }
+}
+
+@mixin referenceImage {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px;
+  word-break: break-word;
+  @include supportsGrid() {
+    margin: 0;
+  }
+  text-align: center;
+  img {
+    width: 120px;
+  }
+}
+
+@mixin gallery() {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include supportsGrid() {
+    align-items: baseline;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 120px);
+    // grid-template-rows: repeat(auto-fill, minmax(180px,max-content));
+    grid-gap: 20px;
+  }
+}
+
+@mixin link() {
+  color: white;
+  transition: color 300ms;
+  &:hover {
+    color: $gold;
+  }
+}
